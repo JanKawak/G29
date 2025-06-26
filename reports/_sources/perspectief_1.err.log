@@ -1,0 +1,227 @@
+Traceback (most recent call last):
+  File "/Users/jankawak/anaconda3/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/jankawak/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jankawak/anaconda3/lib/python3.11/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jankawak/anaconda3/lib/python3.11/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jankawak/anaconda3/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/jankawak/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/jankawak/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/jankawak/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import pandas as pd
+import numpy as np
+from scipy.stats import pearsonr
+import plotly.graph_objects as go
+
+# ───── 1. Data inlezen ──────────────────────────────────────
+MENTAL_CSV = "Data/mental_welfare_dataset.csv"
+CPDS_CSV   = "Data/cpds-1960-2022-update-2024-2.csv"
+
+mental = pd.read_csv(MENTAL_CSV).rename(columns={"Unnamed: 0": "drop"}, errors="ignore")
+cpds = pd.read_csv(CPDS_CSV)
+cpds.columns = [c.lower() for c in cpds.columns]
+
+# ───── 2. Harmonisatie ──────────────────────────────────────
+rename = {"United States of America": "United States",
+          "Czech Republic": "Czechia", "Russian Federation": "Russia"}
+for d in (mental, cpds):
+    d["country"] = d["country"].replace(rename)
+
+mental.rename(columns={"life_ladder": "ladder"}, inplace=True)
+
+# ───── 3. Variabelen ────────────────────────────────────────
+social_vars_all = [s.lower() for s in [
+    "sstran", "socexp_t_pmp", "socexp_c_pmp", "socexp_k_pmp",
+    "oldage_pmp", "survivor_pmp", "incapben_pmp", "health_pmp",
+    "family_pmp", "fallow_pmp", "mpleave_pmp", "childcare_pmp",
+    "homehelp_pmp", "unemp_pmp", "almp_pmp", "training_pmp",
+    "housing_pmp", "othsocx_pmp"
+]]
+social_vars = [v for v in social_vars_all if v in cpds.columns]
+
+# ───── 4. Merge ─────────────────────────────────────────────
+merged = mental.merge(cpds[["country", "year"] + social_vars],
+                      on=["country", "year"], how="inner").dropna()
+
+# ───── 5. Correlatie berekenen en filteren ──────────────────
+r_values = []
+filtered_vars = []
+for s in social_vars:
+    r = pearsonr(merged["ladder"], merged[s])[0]
+    if r >= 0.4:  # Alleen positieve verbanden >= 0.4
+        r_values.append(r)
+        filtered_vars.append(s)
+
+# ───── 6. Labels en uitleg ─────────────────────────────────
+soc_lbl = {
+    "sstran": "Soc. transfers %GDP",
+    "socexp_t_pmp": "Total soc. exp.",
+    "socexp_c_pmp": "Cash soc. exp.",
+    "socexp_k_pmp": "In-kind soc. exp.",
+    "oldage_pmp": "Old-age ben.",
+    "survivor_pmp": "Survivor ben.",
+    "incapben_pmp": "Incapacity ben.",
+    "health_pmp": "Health exp.",
+    "family_pmp": "Family ben.",
+    "fallow_pmp": "Family allowance",
+    "mpleave_pmp": "Mat./Pat. leave",
+    "childcare_pmp": "Child-care ben.",
+    "homehelp_pmp": "Home-help ben.",
+    "unemp_pmp": "Unemployment ben.",
+    "almp_pmp": "ALMP programmes",
+    "training_pmp": "Training prog.",
+    "housing_pmp": "Housing ben.",
+    "othsocx_pmp": "Other soc. exp."
+}
+
+soc_expl = {
+    "sstran": "Overheidsuitgaven aan sociale transfers als % van het BBP.",
+    "socexp_t_pmp": "Totale sociale overheidsuitgaven per hoofd van de bevolking.",
+    "socexp_c_pmp": "Sociale uitgaven in geld, per persoon.",
+    "socexp_k_pmp": "Sociale uitgaven in natura (zoals gezondheidszorg), per persoon.",
+    "oldage_pmp": "Overheidsuitgaven aan pensioenen, per persoon.",
+    "survivor_pmp": "Uitgaven aan nabestaanden, per persoon.",
+    "incapben_pmp": "Uitgaven aan arbeidsongeschiktheid, per persoon.",
+    "health_pmp": "Overheidsuitgaven aan gezondheidszorg, per persoon.",
+    "family_pmp": "Overheidsuitgaven aan gezinsvoordelen, per persoon.",
+    "fallow_pmp": "Kinderbijslag en soortgelijke voordelen, per persoon.",
+    "mpleave_pmp": "Uitgaven aan ouderschapsverlof, per persoon.",
+    "childcare_pmp": "Uitgaven aan kinderopvang, per persoon.",
+    "homehelp_pmp": "Uitgaven aan thuishulp voor ouderen/zieken.",
+    "unemp_pmp": "Uitgaven aan werkloosheidsuitkeringen, per persoon.",
+    "almp_pmp": "Actief arbeidsmarktbeleid, zoals training/subsidies.",
+    "training_pmp": "Training- en omscholingsprogramma's, per persoon.",
+    "housing_pmp": "Uitgaven aan huisvestingssteun, per persoon.",
+    "othsocx_pmp": "Overige sociale uitgaven, per persoon."
+}
+
+col_labels = [soc_lbl.get(s, s) for s in filtered_vars]
+
+# ───── 7. Sorting toepassen ─────────────────────────────────
+combined = sorted(zip(col_labels, r_values, filtered_vars), key=lambda x: x[1])
+col_labels_sorted = [x[0] for x in combined]
+r_values_sorted = [x[1] for x in combined]
+filtered_vars_sorted = [x[2] for x in combined]
+
+# ───── 8. Hovertekst opnieuw genereren ──────────────────────
+hover_text_sorted = []
+for i in range(len(r_values_sorted)):
+    uitleg = soc_expl.get(filtered_vars_sorted[i], "")
+    tekst = (
+        f"<b>{col_labels_sorted[i]}</b><br>"
+        f"{uitleg}<br><br>"
+        f"Verband: {r_values_sorted[i]:.2f}<br>"
+        f"Hoger → meer geluk"
+    )
+    hover_text_sorted.append(tekst)
+
+# ───── 9. Heatmap tekenen ───────────────────────────────────
+fig = go.Figure()
+
+fig.add_trace(go.Heatmap(
+    z=[r_values_sorted],
+    x=col_labels_sorted,
+    y=["Geluksscore"],
+    colorscale='reds',
+    zmin=0,
+    zmax=1,
+    text=[hover_text_sorted],
+    hoverinfo="text",
+    showscale=False  # Geen kleurbar
+))
+
+fig.update_layout(
+    title="Sterkte van positieve verbanden tussen overheidsuitgaven en geluk",
+    xaxis_title="Soort overheidsuitgave (oplopend verband)",
+    xaxis_tickangle=-45,
+    width=1100,
+    height=300,
+    font=dict(size=12),
+    plot_bgcolor='white',
+    margin=dict(l=100, r=100, t=100, b=120)
+)
+
+fig.show()
+
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+Cell [0;32mIn[1], line 10[0m
+[1;32m      7[0m MENTAL_CSV [38;5;241m=[39m [38;5;124m"[39m[38;5;124mData/mental_welfare_dataset.csv[39m[38;5;124m"[39m
+[1;32m      8[0m CPDS_CSV   [38;5;241m=[39m [38;5;124m"[39m[38;5;124mData/cpds-1960-2022-update-2024-2.csv[39m[38;5;124m"[39m
+[0;32m---> 10[0m mental [38;5;241m=[39m pd[38;5;241m.[39mread_csv(MENTAL_CSV)[38;5;241m.[39mrename(columns[38;5;241m=[39m{[38;5;124m"[39m[38;5;124mUnnamed: 0[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124mdrop[39m[38;5;124m"[39m}, errors[38;5;241m=[39m[38;5;124m"[39m[38;5;124mignore[39m[38;5;124m"[39m)
+[1;32m     11[0m cpds [38;5;241m=[39m pd[38;5;241m.[39mread_csv(CPDS_CSV)
+[1;32m     12[0m cpds[38;5;241m.[39mcolumns [38;5;241m=[39m [c[38;5;241m.[39mlower() [38;5;28;01mfor[39;00m c [38;5;129;01min[39;00m cpds[38;5;241m.[39mcolumns]
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py:912[0m, in [0;36mread_csv[0;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)[0m
+[1;32m    899[0m kwds_defaults [38;5;241m=[39m _refine_defaults_read(
+[1;32m    900[0m     dialect,
+[1;32m    901[0m     delimiter,
+[0;32m   (...)[0m
+[1;32m    908[0m     dtype_backend[38;5;241m=[39mdtype_backend,
+[1;32m    909[0m )
+[1;32m    910[0m kwds[38;5;241m.[39mupdate(kwds_defaults)
+[0;32m--> 912[0m [38;5;28;01mreturn[39;00m _read(filepath_or_buffer, kwds)
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py:577[0m, in [0;36m_read[0;34m(filepath_or_buffer, kwds)[0m
+[1;32m    574[0m _validate_names(kwds[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mnames[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m))
+[1;32m    576[0m [38;5;66;03m# Create the parser.[39;00m
+[0;32m--> 577[0m parser [38;5;241m=[39m TextFileReader(filepath_or_buffer, [38;5;241m*[39m[38;5;241m*[39mkwds)
+[1;32m    579[0m [38;5;28;01mif[39;00m chunksize [38;5;129;01mor[39;00m iterator:
+[1;32m    580[0m     [38;5;28;01mreturn[39;00m parser
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1407[0m, in [0;36mTextFileReader.__init__[0;34m(self, f, engine, **kwds)[0m
+[1;32m   1404[0m     [38;5;28mself[39m[38;5;241m.[39moptions[[38;5;124m"[39m[38;5;124mhas_index_names[39m[38;5;124m"[39m] [38;5;241m=[39m kwds[[38;5;124m"[39m[38;5;124mhas_index_names[39m[38;5;124m"[39m]
+[1;32m   1406[0m [38;5;28mself[39m[38;5;241m.[39mhandles: IOHandles [38;5;241m|[39m [38;5;28;01mNone[39;00m [38;5;241m=[39m [38;5;28;01mNone[39;00m
+[0;32m-> 1407[0m [38;5;28mself[39m[38;5;241m.[39m_engine [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_make_engine(f, [38;5;28mself[39m[38;5;241m.[39mengine)
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1661[0m, in [0;36mTextFileReader._make_engine[0;34m(self, f, engine)[0m
+[1;32m   1659[0m     [38;5;28;01mif[39;00m [38;5;124m"[39m[38;5;124mb[39m[38;5;124m"[39m [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m mode:
+[1;32m   1660[0m         mode [38;5;241m+[39m[38;5;241m=[39m [38;5;124m"[39m[38;5;124mb[39m[38;5;124m"[39m
+[0;32m-> 1661[0m [38;5;28mself[39m[38;5;241m.[39mhandles [38;5;241m=[39m get_handle(
+[1;32m   1662[0m     f,
+[1;32m   1663[0m     mode,
+[1;32m   1664[0m     encoding[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39moptions[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mencoding[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m   1665[0m     compression[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39moptions[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mcompression[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m   1666[0m     memory_map[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39moptions[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mmemory_map[39m[38;5;124m"[39m, [38;5;28;01mFalse[39;00m),
+[1;32m   1667[0m     is_text[38;5;241m=[39mis_text,
+[1;32m   1668[0m     errors[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39moptions[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mencoding_errors[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mstrict[39m[38;5;124m"[39m),
+[1;32m   1669[0m     storage_options[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39moptions[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mstorage_options[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m   1670[0m )
+[1;32m   1671[0m [38;5;28;01massert[39;00m [38;5;28mself[39m[38;5;241m.[39mhandles [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m
+[1;32m   1672[0m f [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mhandles[38;5;241m.[39mhandle
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/pandas/io/common.py:859[0m, in [0;36mget_handle[0;34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)[0m
+[1;32m    854[0m [38;5;28;01melif[39;00m [38;5;28misinstance[39m(handle, [38;5;28mstr[39m):
+[1;32m    855[0m     [38;5;66;03m# Check whether the filename is to be opened in binary mode.[39;00m
+[1;32m    856[0m     [38;5;66;03m# Binary mode does not support 'encoding' and 'newline'.[39;00m
+[1;32m    857[0m     [38;5;28;01mif[39;00m ioargs[38;5;241m.[39mencoding [38;5;129;01mand[39;00m [38;5;124m"[39m[38;5;124mb[39m[38;5;124m"[39m [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m ioargs[38;5;241m.[39mmode:
+[1;32m    858[0m         [38;5;66;03m# Encoding[39;00m
+[0;32m--> 859[0m         handle [38;5;241m=[39m [38;5;28mopen[39m(
+[1;32m    860[0m             handle,
+[1;32m    861[0m             ioargs[38;5;241m.[39mmode,
+[1;32m    862[0m             encoding[38;5;241m=[39mioargs[38;5;241m.[39mencoding,
+[1;32m    863[0m             errors[38;5;241m=[39merrors,
+[1;32m    864[0m             newline[38;5;241m=[39m[38;5;124m"[39m[38;5;124m"[39m,
+[1;32m    865[0m         )
+[1;32m    866[0m     [38;5;28;01melse[39;00m:
+[1;32m    867[0m         [38;5;66;03m# Binary mode[39;00m
+[1;32m    868[0m         handle [38;5;241m=[39m [38;5;28mopen[39m(handle, ioargs[38;5;241m.[39mmode)
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'Data/mental_welfare_dataset.csv'
+FileNotFoundError: [Errno 2] No such file or directory: 'Data/mental_welfare_dataset.csv'
+

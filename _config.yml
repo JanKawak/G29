@@ -1,4 +1,4 @@
-title: Mijn Project Titel
+title: Welzijn
 author: G29
 
 repository:
@@ -10,6 +10,9 @@ html:
   baseurl: "/G29/"
   use_issues_button: true
   use_repository_button: true
+
+execute:
+  execute_notebooks: force
 
 launch_buttons:
   binderhub_url: ""
