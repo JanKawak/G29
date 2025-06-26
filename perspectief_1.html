@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Welzijn</title>
+    <title>Investeer méér in persoon‑gerichte sociale hulpdiensten &#8212; Welzijn</title>
   
   
   
@@ -200,8 +200,9 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Preprocessing</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Investeer méér in persoon‑gerichte sociale hulpdiensten</a></li>
 <li class="toctree-l1"><a class="reference internal" href="perspectief_2.html">Vrijheid, politiek en geluk: hoe culturele factoren ons welzijn beïnvloeden</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusie.html">Conclusie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="samenwerking.html">Samenwerking</a></li>
@@ -408,9 +409,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -421,19 +420,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Investeer méér in persoon‑gerichte sociale hulpdiensten</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -443,7 +434,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <section id="investeer-meer-in-persoongerichte-sociale-hulpdiensten">
+<h1>Investeer méér in persoon‑gerichte sociale hulpdiensten<a class="headerlink" href="#investeer-meer-in-persoongerichte-sociale-hulpdiensten" title="Link to this heading">#</a></h1>
+<p>Onder “sociale hulpdiensten” verstaan we professionals die direct hulp verlenen – thuiszorg, GGZ‑teams, re‑integratiecoaches, kinderopvang, wijkzorg en begeleid wonen. Het gaat dus om diensten in natura, niet om geldbedragen op iemands rekening.
+Onze analyse steunt op de mental_welfare_dataset (2011‑2016, 77 landen). Voor het jaar 2012 beschikken we over een volledige set variabelen; daarom tonen alle drie de grafieken die steekproef (± 30 landen per plot).
+Argument 1 – Heatmap toont dat in‑natura hulpdiensten de duidelijkste welzijnsboost geven</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -646,201 +642,9 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">plotly.subplots</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_subplots</span>
-
-<span class="c1"># Dataset inladen</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Data/volledige_gecombineerde_dataset.csv&quot;</span><span class="p">)</span>
-
-<span class="c1"># Filter op 2012 en complete data</span>
-<span class="n">df_happy</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2012</span><span class="p">)]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span>
-    <span class="s1">&#39;socexp_c_pmp&#39;</span><span class="p">,</span> <span class="s1">&#39;socexp_k_pmp&#39;</span><span class="p">,</span> <span class="s1">&#39;ladder_y&#39;</span>
-<span class="p">])</span>
-
-<span class="c1"># Kleuren per land</span>
-<span class="n">kleuren</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">qualitative</span><span class="o">.</span><span class="n">Plotly</span> <span class="o">+</span> <span class="n">px</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">qualitative</span><span class="o">.</span><span class="n">D3</span> <span class="o">+</span> <span class="n">px</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">qualitative</span><span class="o">.</span><span class="n">Set3</span>
-<span class="n">landen</span> <span class="o">=</span> <span class="n">df_happy</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-<span class="n">kleuren_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">land</span><span class="p">:</span> <span class="n">kleuren</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">kleuren</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">land</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">landen</span><span class="p">)}</span>
-<span class="n">kleur_per_land</span> <span class="o">=</span> <span class="n">df_happy</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">kleuren_dict</span><span class="p">)</span>
-
-<span class="c1"># Regressielijn functie</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">bereken_regressie</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span>
-    <span class="n">y_vals</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x_vals</span> <span class="o">+</span> <span class="n">intercept</span>
-    <span class="k">return</span> <span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="c1"># Bepaal assen-schaal</span>
-<span class="n">x_min</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">df_happy</span><span class="p">[</span><span class="s1">&#39;socexp_c_pmp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df_happy</span><span class="p">[</span><span class="s1">&#39;socexp_k_pmp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
-<span class="n">x_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">df_happy</span><span class="p">[</span><span class="s1">&#39;socexp_c_pmp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">df_happy</span><span class="p">[</span><span class="s1">&#39;socexp_k_pmp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
-
-<span class="c1"># Regressie + correlatie berekenen</span>
-<span class="n">x_vals_c</span><span class="p">,</span> <span class="n">y_vals_c</span><span class="p">,</span> <span class="n">corr_c</span> <span class="o">=</span> <span class="n">bereken_regressie</span><span class="p">(</span><span class="n">df_happy</span><span class="p">[</span><span class="s1">&#39;socexp_c_pmp&#39;</span><span class="p">],</span> <span class="n">df_happy</span><span class="p">[</span><span class="s1">&#39;ladder_y&#39;</span><span class="p">])</span>
-<span class="n">x_vals_k</span><span class="p">,</span> <span class="n">y_vals_k</span><span class="p">,</span> <span class="n">corr_k</span> <span class="o">=</span> <span class="n">bereken_regressie</span><span class="p">(</span><span class="n">df_happy</span><span class="p">[</span><span class="s1">&#39;socexp_k_pmp&#39;</span><span class="p">],</span> <span class="n">df_happy</span><span class="p">[</span><span class="s1">&#39;ladder_y&#39;</span><span class="p">])</span>
-
-<span class="c1"># Subplots aanmaken</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">subplot_titles</span><span class="o">=</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;Cash-uitgaven versus geluk (r = </span><span class="si">{</span><span class="n">corr_c</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span>
-    <span class="sa">f</span><span class="s2">&quot;In-kind-uitgaven versus geluk (r = </span><span class="si">{</span><span class="n">corr_k</span><span class="si">}</span><span class="s2">)&quot;</span>
-<span class="p">))</span>
-
-<span class="c1"># Cash-uitgaven (links)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">df_happy</span><span class="p">[</span><span class="s1">&#39;socexp_c_pmp&#39;</span><span class="p">],</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">df_happy</span><span class="p">[</span><span class="s1">&#39;ladder_y&#39;</span><span class="p">],</span>
-    <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">,</span>
-    <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">kleur_per_land</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)),</span>
-    <span class="n">text</span><span class="o">=</span><span class="n">df_happy</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">],</span>
-    <span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">hovertemplate</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;Land:&lt;/b&gt; %</span><span class="si">{text}</span><span class="s2">&lt;br&gt;Cash-uitgaven: %</span><span class="si">{x:.2f}</span><span class="s2">% van BBP&lt;br&gt;Gemiddelde geluksscore: %</span><span class="si">{y:.2f}</span><span class="s2"> (0-10)&lt;extra&gt;&lt;/extra&gt;&quot;</span>
-<span class="p">),</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">x_vals_c</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">y_vals_c</span><span class="p">,</span>
-    <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span>
-    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="s1">&#39;dash&#39;</span><span class="p">),</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Trend cash-uitgaven&#39;</span>
-<span class="p">),</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># In-kind-uitgaven (rechts)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">df_happy</span><span class="p">[</span><span class="s1">&#39;socexp_k_pmp&#39;</span><span class="p">],</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">df_happy</span><span class="p">[</span><span class="s1">&#39;ladder_y&#39;</span><span class="p">],</span>
-    <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">,</span>
-    <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">kleur_per_land</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)),</span>
-    <span class="n">text</span><span class="o">=</span><span class="n">df_happy</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">],</span>
-    <span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">hovertemplate</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;Land:&lt;/b&gt; %</span><span class="si">{text}</span><span class="s2">&lt;br&gt;In-kind-uitgaven: %</span><span class="si">{x:.2f}</span><span class="s2">% van BBP&lt;br&gt;Gemiddelde geluksscore: %</span><span class="si">{y:.2f}</span><span class="s2"> (0-10)&lt;extra&gt;&lt;/extra&gt;&quot;</span>
-<span class="p">),</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">x_vals_k</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">y_vals_k</span><span class="p">,</span>
-    <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span>
-    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="s1">&#39;dash&#39;</span><span class="p">),</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Trend in-kind-uitgaven&#39;</span>
-<span class="p">),</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="c1"># Layout netjes maken</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
-    <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
-    <span class="n">width</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-    <span class="n">title_text</span><span class="o">=</span><span class="s2">&quot;Relatie tussen sociale uitgaven en geluk per land (2012)&quot;</span><span class="p">,</span>
-    <span class="n">template</span><span class="o">=</span><span class="s2">&quot;simple_white&quot;</span><span class="p">,</span>
-    <span class="n">legend</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">1.05</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-<span class="p">)</span>
-
-<span class="c1"># X-as schalen gelijk zetten</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="n">x_min</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">title_text</span><span class="o">=</span><span class="s2">&quot;Uitgaven als percentage van BBP&quot;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="n">x_min</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">title_text</span><span class="o">=</span><span class="s2">&quot;Uitgaven als percentage van BBP&quot;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s2">&quot;Gemiddelde geluksscore (0-10)&quot;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s2">&quot;Gemiddelde geluksscore (0-10)&quot;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
-
-<span class="c1"># Dataset inladen</span>
-<span class="n">pad</span> <span class="o">=</span> <span class="s2">&quot;Data/volledige_gecombineerde_dataset.csv&quot;</span>  <span class="c1"># Pas pad aan indien nodig</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">pad</span><span class="p">)</span>
-
-<span class="c1"># Filteren op compleet jaar</span>
-<span class="n">df_2012</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2012</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span>
-    <span class="s1">&#39;socexp_c_pmp&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;socexp_k_pmp&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;ladder_y&#39;</span>  <span class="c1"># Dit is de juiste kolomnaam</span>
-<span class="p">])</span>
-
-<span class="c1"># Functie voor regressielijn</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">regressielijn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span>
-    <span class="n">y_vals</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x_vals</span> <span class="o">+</span> <span class="n">intercept</span>
-    <span class="k">return</span> <span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span>
-
-<span class="c1"># Data voorbereiden</span>
-<span class="n">x_cash</span> <span class="o">=</span> <span class="n">df_2012</span><span class="p">[</span><span class="s1">&#39;socexp_c_pmp&#39;</span><span class="p">]</span>
-<span class="n">x_natura</span> <span class="o">=</span> <span class="n">df_2012</span><span class="p">[</span><span class="s1">&#39;socexp_k_pmp&#39;</span><span class="p">]</span>
-<span class="n">y_geluk</span> <span class="o">=</span> <span class="n">df_2012</span><span class="p">[</span><span class="s1">&#39;ladder_y&#39;</span><span class="p">]</span>
-
-
-<span class="c1"># Regressielijnen</span>
-<span class="n">x_vals_cash</span><span class="p">,</span> <span class="n">y_vals_cash</span> <span class="o">=</span> <span class="n">regressielijn</span><span class="p">(</span><span class="n">x_cash</span><span class="p">,</span> <span class="n">y_geluk</span><span class="p">)</span>
-<span class="n">x_vals_natura</span><span class="p">,</span> <span class="n">y_vals_natura</span> <span class="o">=</span> <span class="n">regressielijn</span><span class="p">(</span><span class="n">x_natura</span><span class="p">,</span> <span class="n">y_geluk</span><span class="p">)</span>
-
-<span class="c1"># Figuur</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
-
-<span class="c1"># Cash-uitgaven</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">x_cash</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">y_geluk</span><span class="p">,</span>
-    <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">,</span>
-    <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">),</span>
-    <span class="n">text</span><span class="o">=</span><span class="n">df_2012</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">],</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Cash-uitgaven (% BBP)&#39;</span><span class="p">,</span>
-    <span class="n">hovertemplate</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;%</span><span class="si">{text}</span><span class="s2">&lt;/b&gt;&lt;br&gt;Cash-uitgaven: %</span><span class="si">{x:.2f}</span><span class="s2">% van BBP&lt;br&gt;Geluksscore: %</span><span class="si">{y:.2f}</span><span class="s2">&lt;extra&gt;&lt;/extra&gt;&quot;</span>
-<span class="p">))</span>
-
-<span class="c1"># In-kind-uitgaven</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">x_natura</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">y_geluk</span><span class="p">,</span>
-    <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">,</span>
-    <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">),</span>
-    <span class="n">text</span><span class="o">=</span><span class="n">df_2012</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">],</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;In-kind-uitgaven (% BBP)&#39;</span><span class="p">,</span>
-    <span class="n">hovertemplate</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;%</span><span class="si">{text}</span><span class="s2">&lt;/b&gt;&lt;br&gt;In-kind-uitgaven: %</span><span class="si">{x:.2f}</span><span class="s2">% van BBP&lt;br&gt;Geluksscore: %</span><span class="si">{y:.2f}</span><span class="s2">&lt;extra&gt;&lt;/extra&gt;&quot;</span>
-<span class="p">))</span>
-
-<span class="c1"># Trendlijn cash</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">x_vals_cash</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">y_vals_cash</span><span class="p">,</span>
-    <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span>
-    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="s1">&#39;dash&#39;</span><span class="p">),</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Trend cash-uitgaven&#39;</span>
-<span class="p">))</span>
-
-<span class="c1"># Trendlijn in-kind</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">x_vals_natura</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">y_vals_natura</span><span class="p">,</span>
-    <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span>
-    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="s1">&#39;dash&#39;</span><span class="p">),</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Trend in-kind-uitgaven&#39;</span>
-<span class="p">))</span>
-
-<span class="c1"># Layout</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Relatie tussen sociale uitgaven en geluk (2012)&quot;</span><span class="p">,</span>
-    <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;Sociale uitgaven als percentage van BBP&quot;</span><span class="p">,</span>
-    <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Gemiddelde geluksscore (0–10)&quot;</span><span class="p">,</span>
-    <span class="n">template</span><span class="o">=</span><span class="s2">&quot;simple_white&quot;</span>
-<span class="p">)</span>
-
-<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-</div>
-</div>
+<p>Figuur 1 - Heatmap</p>
+<p>Deze heatmap vergelijkt elf categorieën van sociale uitgaven met de gemiddelde Cantril‑geluksscore over de periode 2011-2016. Het meest in het oog springend is het vakje voor in‑natura social expenditure: dit kleurt het donkerst en vertegenwoordigt daarmee de sterkste positieve samenhang met nationaal geluk (Pierson r ≈ 0,80). De overige categorieën zijn zichtbaar lichter, wat aangeeft dat hun verband met subjectief welzijn zwakker is.</p>
+<p>Argument 2 – Interactieve scatter: hulpdiensten vs. drie hoofdmaten</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -947,6 +751,115 @@ document.write(`
 <div class="cell_output docutils container">
 </div>
 </div>
+<p>Figuur 2 – Eén schuifknop, drie verhalen.
+In dit interactieve diagram staat op de x-as het aandeel in-natura-uitgaven (% BBP). Zet u de knop op Geluksscore (r = 0,73), dan loopt de wolk duidelijk omhoog: elk extra BBP-procent hulpdiensten levert gemiddeld +0,25 punt op de Cantril-ladder. Schuift u naar Suïcide per 100 000 (r = -0,14), kantelt de trendlijn licht naar beneden: meer diensten gaan samen met minder zelfdodingen.
+Bij Totale mentale aandoeningen (r = 0,35) stijgt de lijn juist bescheiden; landen met grotere hulpsystemen herkennen en registreren psychische problemen beter, wat het hogere cijfer verklaart. Zo laat één grafiek in één oogopslag zien dat investeren in hulpdiensten tegelijk geluk vergroot, suïcide drukt en diagnose-bereidheid vergroot.
+N.B.: De correlatie tussen de geluksscore en sociale uitgaven is hier anders dan de heatmap. Dit komt doordat deze grafiek alleen data uit 2012 gebruikt.</p>
+<p>Argument 3 – Diensten verslaan cash‑uitkeringen, punt voor punt</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+
+<span class="c1"># Dataset inladen</span>
+<span class="n">pad</span> <span class="o">=</span> <span class="s2">&quot;Data/volledige_gecombineerde_dataset.csv&quot;</span>  <span class="c1"># Pas pad aan indien nodig</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">pad</span><span class="p">)</span>
+
+<span class="c1"># Filteren op compleet jaar</span>
+<span class="n">df_2012</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2012</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span>
+    <span class="s1">&#39;socexp_c_pmp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;socexp_k_pmp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ladder_y&#39;</span>  <span class="c1"># Dit is de juiste kolomnaam</span>
+<span class="p">])</span>
+
+<span class="c1"># Functie voor regressielijn</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">regressielijn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">y_vals</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x_vals</span> <span class="o">+</span> <span class="n">intercept</span>
+    <span class="k">return</span> <span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span>
+
+<span class="c1"># Data voorbereiden</span>
+<span class="n">x_cash</span> <span class="o">=</span> <span class="n">df_2012</span><span class="p">[</span><span class="s1">&#39;socexp_c_pmp&#39;</span><span class="p">]</span>
+<span class="n">x_natura</span> <span class="o">=</span> <span class="n">df_2012</span><span class="p">[</span><span class="s1">&#39;socexp_k_pmp&#39;</span><span class="p">]</span>
+<span class="n">y_geluk</span> <span class="o">=</span> <span class="n">df_2012</span><span class="p">[</span><span class="s1">&#39;ladder_y&#39;</span><span class="p">]</span>
+
+
+<span class="c1"># Regressielijnen</span>
+<span class="n">x_vals_cash</span><span class="p">,</span> <span class="n">y_vals_cash</span> <span class="o">=</span> <span class="n">regressielijn</span><span class="p">(</span><span class="n">x_cash</span><span class="p">,</span> <span class="n">y_geluk</span><span class="p">)</span>
+<span class="n">x_vals_natura</span><span class="p">,</span> <span class="n">y_vals_natura</span> <span class="o">=</span> <span class="n">regressielijn</span><span class="p">(</span><span class="n">x_natura</span><span class="p">,</span> <span class="n">y_geluk</span><span class="p">)</span>
+
+<span class="c1"># Figuur</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+
+<span class="c1"># Cash-uitgaven</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">x_cash</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">y_geluk</span><span class="p">,</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">),</span>
+    <span class="n">text</span><span class="o">=</span><span class="n">df_2012</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">],</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Cash-uitgaven (% BBP)&#39;</span><span class="p">,</span>
+    <span class="n">hovertemplate</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;%</span><span class="si">{text}</span><span class="s2">&lt;/b&gt;&lt;br&gt;Cash-uitgaven: %</span><span class="si">{x:.2f}</span><span class="s2">% van BBP&lt;br&gt;Geluksscore: %</span><span class="si">{y:.2f}</span><span class="s2">&lt;extra&gt;&lt;/extra&gt;&quot;</span>
+<span class="p">))</span>
+
+<span class="c1"># In-kind-uitgaven</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">x_natura</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">y_geluk</span><span class="p">,</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">),</span>
+    <span class="n">text</span><span class="o">=</span><span class="n">df_2012</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">],</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;In-kind-uitgaven (% BBP)&#39;</span><span class="p">,</span>
+    <span class="n">hovertemplate</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;%</span><span class="si">{text}</span><span class="s2">&lt;/b&gt;&lt;br&gt;In-kind-uitgaven: %</span><span class="si">{x:.2f}</span><span class="s2">% van BBP&lt;br&gt;Geluksscore: %</span><span class="si">{y:.2f}</span><span class="s2">&lt;extra&gt;&lt;/extra&gt;&quot;</span>
+<span class="p">))</span>
+
+<span class="c1"># Trendlijn cash</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">x_vals_cash</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">y_vals_cash</span><span class="p">,</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span>
+    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="s1">&#39;dash&#39;</span><span class="p">),</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Trend cash-uitgaven&#39;</span>
+<span class="p">))</span>
+
+<span class="c1"># Trendlijn in-kind</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">x_vals_natura</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">y_vals_natura</span><span class="p">,</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span>
+    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="s1">&#39;dash&#39;</span><span class="p">),</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Trend in-kind-uitgaven&#39;</span>
+<span class="p">))</span>
+
+<span class="c1"># Layout</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Relatie tussen sociale uitgaven en geluk (2012)&quot;</span><span class="p">,</span>
+    <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;Sociale uitgaven als percentage van BBP&quot;</span><span class="p">,</span>
+    <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Gemiddelde geluksscore (0–10)&quot;</span><span class="p">,</span>
+    <span class="n">template</span><span class="o">=</span><span class="s2">&quot;simple_white&quot;</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<p>Figuur 3 - in‑natura hulpdiensten tegenover cash‑uitgaven
+Gele punten = in‑natura hulpdiensten. (r = 0.06)
+Blauwe punten = cash‑uitgaven. (r = 0.73)
+De gele regressielijn stijgt maar liefst twaalf keer zo sterk als de blauwe. Een concreet voorbeeld: Frankrijk spendeert in 2012 13 % BBP aan cash‑uitkeringen en haalt een geluks score ~ 6,5. Zweden investeert 9 % BBP in hulpdiensten en bereikt 7,4. Over het hele bereik (4–12 % BBP) geldt: een euro in begeleiding, zorg of opvang vertaalt zich in aanzienlijk meer subjectief welzijn dan dezelfde euro in directe transfers.</p>
+<p>Economisch rendement &amp; beleidsimplicaties
+Mensen met een hogere geluksscore zijn productiever. De recente meta‑studie Fang, Veenhoven &amp; Burger (2025) – 197 correlaties, 27 landen – vindt r ≈ 0,30 (cross‑sectioneel) en r ≈ 0,38 (longitudinaal) tussen geluk en door supervisors gemeten output. Dat impliceert ~ 35 % extra productiviteitsgroei per standaarddeviatie hogere happiness.</p>
+<p>Wat dit voor Nederland betekent
+Verhoog het budget voor hulpdiensten – al +1 % BBP kan (volgens r = 0,73) ~ 0,25 ladderpunten opleveren; via Fang et al. vertaalt dat zich in een structurele productiviteitswinst.
+Monitor drie variabelen: Cantril‑score, suïcidecijfer, prevalence mentale stoornissen. Zo kunt u het maatschappelijk rendement transparant volgen.
+Communiceer de business‑case: iedere euro in hulpdiensten betaalt zich terug via hogere arbeidsparticipatie, lagere zorgkosten en extra belastingopbrengsten.
+Door meer te investeren in persoon‑gerichte hulpdiensten versterkt Nederland tegelijkertijd het menselijk kapitaal en de economische veerkracht.</p>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1002,21 +915,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>
