@@ -26,10 +26,9 @@ html:
   use_issues_button: true
   use_repository_button: true
   show_navbar_depth: 1
-
-  # Toggle knoppen voor code
   extra_footer: ""
   use_togglebutton: true
+  extra_navbar: "" 
 
 # Add launch buttons
 launch_buttons:
