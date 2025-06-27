@@ -5,7 +5,7 @@ Daarnaast laten visualisaties **2.1**, **2.2** en **2.3** zien dat vrijheid en m
 We benadrukken dat de analyse gebaseerd is op data uit circa 2012. De patronen geven waardevolle inzichten, maar tonen samenh
 
 ## Peer feedback
-# Op 24 juni 2025 hebben we peer feedback ontvangen van groep 14. Tijdens de sessie presenteerden we de voorlopige versie van onze data story, waarna we inhoudelijke feedback kregen op opbouw, duidelijkheid en visualisaties.
+Op 24 juni 2025 hebben we peer feedback ontvangen van groep 14. Tijdens de sessie presenteerden we de voorlopige versie van onze data story, waarna we inhoudelijke feedback kregen op opbouw, duidelijkheid en visualisaties.
 
 ## Belangrijkste punten uit de feedback:
 - Preprocessing mocht korter en algemener, zonder overbodige details per dataset.

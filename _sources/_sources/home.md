@@ -18,3 +18,9 @@ Met interactieve en statische visualisaties maken we zichtbaar hoe beleid en cul
 - [Perspectief 2](perspectief_2.ipynb)  
 - [Conclusie](conclusie.md)  
 - [Samenwerking](samenwerking.md)
+
+**Authors**
+- Jan Kawak
+- Fien van Engelen
+- Hein Godeke
+- Diederick van der Slot
