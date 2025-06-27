@@ -403,26 +403,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Dataset and Preprocessing</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#datasetbeschrijvingen">Datasetbeschrijvingen</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#happiness-cantril-ladder">Happiness Cantril Ladder</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mental-health-dataset">Mental Health Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suicide-rates-dataset">Suicide Rates Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#happiness-and-life-satisfaction-politics-dataset">Happiness and Life Satisfaction - Politics Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparative-political-dataset-cpds">Comparative Political Dataset (CPDS)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mental-health-and-lifestyle-dataset">Mental Health and Lifestyle Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-stappen">Preprocessing stappen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selectie-van-relevante-variabelen">Selectie van relevante variabelen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opschonen-van-kolomnamen">Opschonen van kolomnamen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-op-tijdsperiode-en-landen">Filtering op tijdsperiode en landen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verwijderen-van-ontbrekende-waarden">Verwijderen van ontbrekende waarden</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#samenvoegen-datasets">Samenvoegen datasets</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#berekenen-van-nieuwe-variabelen">Berekenen van nieuwe variabelen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normaliseren-van-variabelen">Normaliseren van variabelen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Dataset and Preprocessing</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gebruikte-datasets">Gebruikte datasets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#happiness-cantril-ladder">1. Happiness Cantril Ladder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mental-health-dataset">2. Mental Health Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suicide-rates-dataset">3. Suicide Rates Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparative-political-dataset-cpds">4. Comparative Political Dataset (CPDS)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#happiness-and-life-satisfaction-politics-dataset">5. Happiness and Life Satisfaction - Politics Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mental-health-and-lifestyle-dataset">6. Mental Health and Lifestyle Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#freedom-house-dataset">7. Freedom House Dataset</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-stappen">Preprocessing-stappen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#samenvatting">Samenvatting</a></li>
 </ul>
 
             </nav>
@@ -437,72 +432,145 @@ document.write(`
                   
   <section id="dataset-and-preprocessing">
 <h1>Dataset and Preprocessing<a class="headerlink" href="#dataset-and-preprocessing" title="Link to this heading">#</a></h1>
-<p>Voor dit project maken we gebruik van zes verschillende datasets die samen inzicht geven in de relatie tussen mentale gezondheid, geluk en maatschappelijke factoren op internationaal niveau. Hieronder beschrijven we de datasets en de belangrijkste preprocessing-stappen die we hebben uitgevoerd.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="datasetbeschrijvingen">
-<h1>Datasetbeschrijvingen<a class="headerlink" href="#datasetbeschrijvingen" title="Link to this heading">#</a></h1>
+<p>Voor dit project combineren we meerdere internationale datasets om te onderzoeken hoe sociale hulpdiensten, vrijheid, politieke betrokkenheid en sociaal gedrag samenhangen met nationaal geluk, mentale gezondheid en welzijn.</p>
+<section id="gebruikte-datasets">
+<h2>Gebruikte datasets<a class="headerlink" href="#gebruikte-datasets" title="Link to this heading">#</a></h2>
 <section id="happiness-cantril-ladder">
-<h2>Happiness Cantril Ladder<a class="headerlink" href="#happiness-cantril-ladder" title="Link to this heading">#</a></h2>
+<h3>1. Happiness Cantril Ladder<a class="headerlink" href="#happiness-cantril-ladder" title="Link to this heading">#</a></h3>
 <p><strong>Bron:</strong> <a class="reference external" href="https://ourworldindata.org/grapher/happiness-cantril-ladder">Our World in Data</a><br />
-Deze dataset bevat per land en per jaar de gemiddelde score van levensvoldoening (geluksscore), gemeten via de Cantril Ladder (schaal 0–10). Dit geeft een direct beeld van hoe gelukkig mensen zichzelf beoordelen.</p>
+<strong>Beschrijving:</strong><br />
+Bevat per land en jaar de gemiddelde levensvoldoening, gemeten via de Cantril Ladder (schaal 0–10).</p>
+<p><strong>Relevante variabelen:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Entity</span></code>: Land</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Year</span></code>: Jaar</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Life</span> <span class="pre">Ladder</span></code>: Gemiddelde geluksscore</p></li>
+</ul>
 </section>
 <section id="mental-health-dataset">
-<h2>Mental Health Dataset<a class="headerlink" href="#mental-health-dataset" title="Link to this heading">#</a></h2>
+<h3>2. Mental Health Dataset<a class="headerlink" href="#mental-health-dataset" title="Link to this heading">#</a></h3>
 <p><strong>Bron:</strong> <a class="reference external" href="https://www.kaggle.com/datasets/imtkaggleteam/mental-health">Kaggle</a><br />
-Bevat gegevens over het voorkomen van depressieve en angststoornissen, gebaseerd op enquêtes en screeningsvragenlijsten.</p>
+<strong>Beschrijving:</strong><br />
+Zelfgerapporteerde gegevens over het voorkomen van mentale aandoeningen, zoals depressie en angststoornissen.</p>
+<p><strong>Relevante variabelen:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Entity</span></code>: Land</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Year</span></code>: Jaar</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Depressive_disorders</span></code>: Percentage mensen met een depressiestoornis</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Anxiety_disorders</span></code>: Percentage mensen met een angststoornis</p></li>
+</ul>
 </section>
 <section id="suicide-rates-dataset">
-<h2>Suicide Rates Dataset<a class="headerlink" href="#suicide-rates-dataset" title="Link to this heading">#</a></h2>
+<h3>3. Suicide Rates Dataset<a class="headerlink" href="#suicide-rates-dataset" title="Link to this heading">#</a></h3>
 <p><strong>Bron:</strong> <a class="reference external" href="https://www.kaggle.com/code/lmorgan95/r-suicide-rates-in-depth-stats-insights/input">Kaggle</a><br />
-Geeft per land en per jaar het aantal zelfmoorden weer, inclusief uitsplitsingen naar leeftijd en geslacht.</p>
-</section>
-<section id="happiness-and-life-satisfaction-politics-dataset">
-<h2>Happiness and Life Satisfaction - Politics Dataset<a class="headerlink" href="#happiness-and-life-satisfaction-politics-dataset" title="Link to this heading">#</a></h2>
-<p><strong>Bron:</strong> <a class="reference external" href="https://ourworldindata.org/happiness-and-life-satisfaction">Our World in Data</a><br />
-Meet hoe belangrijk mensen politiek vinden in hun leven, weergegeven per land en per jaar.</p>
+<strong>Beschrijving:</strong><br />
+Aantal zelfmoorden per land, per jaar, inclusief uitsplitsingen naar leeftijd en geslacht.</p>
+<p><strong>Relevante variabelen:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">country</span></code>: Land</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">year</span></code>: Jaar</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">suicides/100k</span> <span class="pre">pop</span></code>: Zelfmoorden per 100.000 inwoners</p></li>
+</ul>
 </section>
 <section id="comparative-political-dataset-cpds">
-<h2>Comparative Political Dataset (CPDS)<a class="headerlink" href="#comparative-political-dataset-cpds" title="Link to this heading">#</a></h2>
+<h3>4. Comparative Political Dataset (CPDS)<a class="headerlink" href="#comparative-political-dataset-cpds" title="Link to this heading">#</a></h3>
 <p><strong>Bron:</strong> <a class="reference external" href="https://cpds-data.org/data/">CPDS Data</a><br />
-Gedetailleerde dataset met onder andere overheidsuitgaven aan sociale zekerheid, onderwijs en gezinstoelagen, voor 36 landen over de periode 1960–2022.</p>
+<strong>Beschrijving:</strong><br />
+Gedetailleerde informatie over overheidsuitgaven aan sociale zekerheid, gezondheidszorg, onderwijs en andere sociale voorzieningen, per land en jaar.</p>
+<p><strong>Relevante variabelen:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">country</span></code>: Land</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">year</span></code>: Jaar</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">socexp_c_pmp</span></code>: Sociale uitgaven in cash (% van het BBP)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">socexp_k_pmp</span></code>: Sociale uitgaven in natura (% van het BBP)</p></li>
+</ul>
+</section>
+<section id="happiness-and-life-satisfaction-politics-dataset">
+<h3>5. Happiness and Life Satisfaction - Politics Dataset<a class="headerlink" href="#happiness-and-life-satisfaction-politics-dataset" title="Link to this heading">#</a></h3>
+<p><strong>Bron:</strong> <a class="reference external" href="https://ourworldindata.org/happiness-and-life-satisfaction">Our World in Data</a><br />
+<strong>Beschrijving:</strong><br />
+Meet hoe belangrijk mensen politiek vinden in hun leven, per land en per jaar.</p>
+<p><strong>Relevante variabelen:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Entity</span></code>: Land</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Year</span></code>: Jaar</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Very</span> <span class="pre">important</span> <span class="pre">in</span> <span class="pre">life:</span> <span class="pre">Politics</span></code>: Percentage mensen dat politiek ‘heel belangrijk’ vindt</p></li>
+</ul>
 </section>
 <section id="mental-health-and-lifestyle-dataset">
-<h2>Mental Health and Lifestyle Dataset<a class="headerlink" href="#mental-health-and-lifestyle-dataset" title="Link to this heading">#</a></h2>
+<h3>6. Mental Health and Lifestyle Dataset<a class="headerlink" href="#mental-health-and-lifestyle-dataset" title="Link to this heading">#</a></h3>
 <p><strong>Bron:</strong> <a class="reference external" href="https://zenodo.org/records/14838680">Zenodo</a><br />
-Een grootschalige dataset (50.000 records) met informatie over mentale gezondheid, werkuren, slaappatroon, alcoholgebruik, roken en andere leefstijlfactoren.</p>
+<strong>Beschrijving:</strong><br />
+Grote dataset met informatie over mentale gezondheid, leefstijl, werkuren, slaap, alcoholgebruik en roken.</p>
+<p><strong>Relevante variabelen:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Alcohol_Consumption</span></code>: Alcoholgebruik per persoon per jaar (liter)</p></li>
+</ul>
+</section>
+<section id="freedom-house-dataset">
+<h3>7. Freedom House Dataset<a class="headerlink" href="#freedom-house-dataset" title="Link to this heading">#</a></h3>
+<p><strong>Bron:</strong> <a class="reference external" href="https://freedomhouse.org/report/freedom-world">Freedom House</a><br />
+<strong>Beschrijving:</strong><br />
+Bevat per land de jaarlijkse vrijheidsscores en vrijheidsstatus (vrij, gedeeltelijk vrij, niet vrij).</p>
+<p><strong>Relevante variabelen:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Entity</span></code>: Land</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Vrijheidsscore</span> <span class="pre">(0-100)</span></code>: Score op vrijheid (0 = niet vrij, 100 = volledig vrij)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Vrijheidsstatus</span></code>: Classificatie (vrij, gedeeltelijk vrij, niet vrij)</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+</section>
 </section>
 <section id="preprocessing-stappen">
-<h2>Preprocessing stappen<a class="headerlink" href="#preprocessing-stappen" title="Link to this heading">#</a></h2>
-<p>Om de datasets te combineren en bruikbaar te maken voor analyse en visualisatie, hebben we de volgende preprocessing-stappen uitgevoerd:</p>
-<section id="selectie-van-relevante-variabelen">
-<h3>Selectie van relevante variabelen<a class="headerlink" href="#selectie-van-relevante-variabelen" title="Link to this heading">#</a></h3>
-<p>Uit de oorspronkelijke datasets hebben we alleen de variabelen geselecteerd die aansluiten bij onze perspectieven, zoals geluksscore, mentale aandoeningen, zelfmoordcijfers, sociaal vangnet en politieke betrokkenheid.</p>
+<h1>Preprocessing-stappen<a class="headerlink" href="#preprocessing-stappen" title="Link to this heading">#</a></h1>
+<p>Om de datasets geschikt te maken voor gecombineerde analyse en visualisatie zijn de volgende preprocessing-stappen uitgevoerd:</p>
+<ul class="simple">
+<li><p><strong>Selectie van relevante variabelen:</strong><br />
+Alleen variabelen die direct aansluiten bij de onderzoeksvragen zijn behouden, waaronder geluksscores, sociale uitgaven (cash en in natura), mentale aandoeningen, zelfmoordcijfers, politieke betrokkenheid, vrijheidsscores en alcoholgebruik.</p></li>
+<li><p><strong>Harmonisatie van landnamen:</strong><br />
+Landnamen zijn gestandaardiseerd over datasets heen (bijv. <em>United States of America</em> → <em>United States</em>) om samenvoegen mogelijk te maken.</p></li>
+<li><p><strong>Filtering op tijdsperiode en landen:</strong></p>
+<ul>
+<li><p>Voor de analyse rond sociale hulpdiensten is gefilterd op de periode 2011–2016.</p></li>
+<li><p>Voor de analyse rond vrijheid en politiek is gewerkt met het meest recente gemeenschappelijke jaar met voldoende data (2012).</p></li>
+<li><p>Landen met ontbrekende data in een van de kernvariabelen zijn verwijderd.</p></li>
+</ul>
+</li>
+<li><p><strong>Opschonen en hernoemen van kolommen:</strong><br />
+Kolomnamen zijn geharmoniseerd naar uniforme Engelse stijl, spaties en onnodige tekens zijn verwijderd.</p></li>
+<li><p><strong>Samenvoegen datasets:</strong><br />
+De originele bronnen zijn gecombineerd op land- en jaar-niveau. Dit heeft geleid tot samengestelde werkbestanden, waaronder:</p>
+<ul>
+<li><p><em>mental_welfare_dataset.csv</em> voor analyses rond sociale hulpdiensten en geluk</p></li>
+<li><p><em>Gecombineerde_dataset__Politiek_belang__alcoholconsumptie_en_geluk.csv</em> voor analyses rond politiek, vrijheid, alcoholgebruik en geluk</p></li>
+<li><p><em>Gecombineerde_dataset_met_extra_vrijheid.csv</em> voor de uitgebreide vrijheid-analyse</p></li>
+</ul>
+</li>
+<li><p><strong>Bepaling van indicatoren:</strong><br />
+Sociale uitgaven zijn opgesplitst in cash-uitgaven en in-natura hulpdiensten. Vrijheid is zowel als numerieke score als als categorie (vrij, gedeeltelijk vrij, niet vrij) meegenomen.</p></li>
+</ul>
+<p><strong>Correlatie-analyse en filtering:</strong><br />
+Binnen de sociale uitgaven zijn alleen indicatoren met een duidelijke positieve correlatie (r ≥ 0.4) met geluk behouden voor visualisatie in de heatmap. Dit zijn:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">socexp_k_pmp</span></code>: Sociale uitgaven in natura (% van het BBP)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">homehelp_pmp</span></code>: Uitgaven aan thuishulp voor ouderen en zieken</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">childcare_pmp</span></code>: Uitgaven aan kinderopvang</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">family_pmp</span></code>: Uitgaven aan gezinsvoordelen</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">health_pmp</span></code>: Overheidsuitgaven aan gezondheidszorg<br />
+Deze indicatoren vertonen in de data het sterkste positieve verband met de Cantril-geluksscore en zijn daarom meegenomen in de verdere analyse.</p></li>
+</ul>
 </section>
-<section id="opschonen-van-kolomnamen">
-<h3>Opschonen van kolomnamen<a class="headerlink" href="#opschonen-van-kolomnamen" title="Link to this heading">#</a></h3>
-<p>Kolomnamen zijn gestandaardiseerd naar een eenduidig Engels formaat om samenvoegen en analyse te vergemakkelijken.</p>
-</section>
-<section id="filtering-op-tijdsperiode-en-landen">
-<h3>Filtering op tijdsperiode en landen<a class="headerlink" href="#filtering-op-tijdsperiode-en-landen" title="Link to this heading">#</a></h3>
-<p>Alle datasets zijn gefilterd op de meest recente jaren waarvoor voldoende data beschikbaar is (grotendeels tussen 2010–2022) en alleen landen die in álle relevante datasets voorkomen zijn behouden.</p>
-</section>
-<section id="verwijderen-van-ontbrekende-waarden">
-<h3>Verwijderen van ontbrekende waarden<a class="headerlink" href="#verwijderen-van-ontbrekende-waarden" title="Link to this heading">#</a></h3>
-<p>Records met ontbrekende of onbetrouwbare gegevens zijn verwijderd, met name binnen de datasets over mentale aandoeningen en zelfmoordcijfers.</p>
-</section>
-<section id="samenvoegen-datasets">
-<h3>Samenvoegen datasets<a class="headerlink" href="#samenvoegen-datasets" title="Link to this heading">#</a></h3>
-<p>De datasets zijn samengevoegd op basis van land en jaar, zodat we integrale vergelijkingen kunnen maken tussen geluk, mentale gezondheid en maatschappelijke factoren.</p>
-</section>
-<section id="berekenen-van-nieuwe-variabelen">
-<h3>Berekenen van nieuwe variabelen<a class="headerlink" href="#berekenen-van-nieuwe-variabelen" title="Link to this heading">#</a></h3>
-<p>Voor enkele indicatoren, zoals overheidsuitgaven aan het sociaal vangnet of werkdruk, zijn nieuwe samengestelde variabelen berekend op basis van de ruwe data.</p>
-</section>
-<section id="normaliseren-van-variabelen">
-<h3>Normaliseren van variabelen<a class="headerlink" href="#normaliseren-van-variabelen" title="Link to this heading">#</a></h3>
-<p>Bepaalde variabelen, zoals zelfmoorden per 100.000 inwoners, zijn genormaliseerd om landen met verschillende bevolkingsomvang goed te kunnen vergelijken.</p>
-</section>
-</section>
+<section id="samenvatting">
+<h1>Samenvatting<a class="headerlink" href="#samenvatting" title="Link to this heading">#</a></h1>
+<p>Dankzij deze preprocessing zijn de datasets geschikt gemaakt voor de twee perspectieven van dit project:</p>
+<ol class="arabic simple">
+<li><p><strong>Sociale hulpdiensten en welzijn:</strong><br />
+We onderzoeken hoe in-natura hulpdiensten bijdragen aan geluk en mentale gezondheid, en vergelijken dit met de effecten van cash-uitkeringen.</p></li>
+<li><p><strong>Vrijheid, politiek en sociaal gedrag:</strong><br />
+We analyseren hoe vrijheid, politieke betrokkenheid en sociaal gedrag (alcoholgebruik) samenhangen met geluk.</p></li>
+</ol>
+<p>De preprocessing sluit direct aan op de interactieve visualisaties en statistische analyses die in het project gepresenteerd worden.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -551,26 +619,21 @@ Een grootschalige dataset (50.000 records) met informatie over mentale gezondhei
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Dataset and Preprocessing</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#datasetbeschrijvingen">Datasetbeschrijvingen</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#happiness-cantril-ladder">Happiness Cantril Ladder</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mental-health-dataset">Mental Health Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suicide-rates-dataset">Suicide Rates Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#happiness-and-life-satisfaction-politics-dataset">Happiness and Life Satisfaction - Politics Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparative-political-dataset-cpds">Comparative Political Dataset (CPDS)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mental-health-and-lifestyle-dataset">Mental Health and Lifestyle Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-stappen">Preprocessing stappen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selectie-van-relevante-variabelen">Selectie van relevante variabelen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opschonen-van-kolomnamen">Opschonen van kolomnamen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-op-tijdsperiode-en-landen">Filtering op tijdsperiode en landen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verwijderen-van-ontbrekende-waarden">Verwijderen van ontbrekende waarden</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#samenvoegen-datasets">Samenvoegen datasets</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#berekenen-van-nieuwe-variabelen">Berekenen van nieuwe variabelen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normaliseren-van-variabelen">Normaliseren van variabelen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Dataset and Preprocessing</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gebruikte-datasets">Gebruikte datasets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#happiness-cantril-ladder">1. Happiness Cantril Ladder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mental-health-dataset">2. Mental Health Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suicide-rates-dataset">3. Suicide Rates Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparative-political-dataset-cpds">4. Comparative Political Dataset (CPDS)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#happiness-and-life-satisfaction-politics-dataset">5. Happiness and Life Satisfaction - Politics Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mental-health-and-lifestyle-dataset">6. Mental Health and Lifestyle Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#freedom-house-dataset">7. Freedom House Dataset</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-stappen">Preprocessing-stappen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#samenvatting">Samenvatting</a></li>
 </ul>
 
   </nav></div>

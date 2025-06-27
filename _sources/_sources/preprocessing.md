@@ -1,56 +1,123 @@
-
 ## Dataset and Preprocessing
-Voor dit project maken we gebruik van zes verschillende datasets die samen inzicht geven in de relatie tussen mentale gezondheid, geluk en maatschappelijke factoren op internationaal niveau. Hieronder beschrijven we de datasets en de belangrijkste preprocessing-stappen die we hebben uitgevoerd.
 
-# Datasetbeschrijvingen
-### Happiness Cantril Ladder  
+Voor dit project combineren we meerdere internationale datasets om te onderzoeken hoe sociale hulpdiensten, vrijheid, politieke betrokkenheid en sociaal gedrag samenhangen met nationaal geluk, mentale gezondheid en welzijn.
+
+### Gebruikte datasets
+
+#### 1. Happiness Cantril Ladder  
 **Bron:** [Our World in Data](https://ourworldindata.org/grapher/happiness-cantril-ladder)  
-Deze dataset bevat per land en per jaar de gemiddelde score van levensvoldoening (geluksscore), gemeten via de Cantril Ladder (schaal 0–10). Dit geeft een direct beeld van hoe gelukkig mensen zichzelf beoordelen.
+**Beschrijving:**  
+Bevat per land en jaar de gemiddelde levensvoldoening, gemeten via de Cantril Ladder (schaal 0–10).  
 
-### Mental Health Dataset  
+**Relevante variabelen:**  
+- `Entity`: Land  
+- `Year`: Jaar  
+- `Life Ladder`: Gemiddelde geluksscore  
+
+#### 2. Mental Health Dataset  
 **Bron:** [Kaggle](https://www.kaggle.com/datasets/imtkaggleteam/mental-health)  
-Bevat gegevens over het voorkomen van depressieve en angststoornissen, gebaseerd op enquêtes en screeningsvragenlijsten.
+**Beschrijving:**  
+Zelfgerapporteerde gegevens over het voorkomen van mentale aandoeningen, zoals depressie en angststoornissen.  
 
-### Suicide Rates Dataset  
+**Relevante variabelen:**  
+- `Entity`: Land  
+- `Year`: Jaar  
+- `Depressive_disorders`: Percentage mensen met een depressiestoornis  
+- `Anxiety_disorders`: Percentage mensen met een angststoornis  
+
+#### 3. Suicide Rates Dataset  
 **Bron:** [Kaggle](https://www.kaggle.com/code/lmorgan95/r-suicide-rates-in-depth-stats-insights/input)  
-Geeft per land en per jaar het aantal zelfmoorden weer, inclusief uitsplitsingen naar leeftijd en geslacht.
+**Beschrijving:**  
+Aantal zelfmoorden per land, per jaar, inclusief uitsplitsingen naar leeftijd en geslacht.  
 
-### Happiness and Life Satisfaction - Politics Dataset  
-**Bron:** [Our World in Data](https://ourworldindata.org/happiness-and-life-satisfaction)  
-Meet hoe belangrijk mensen politiek vinden in hun leven, weergegeven per land en per jaar.
+**Relevante variabelen:**  
+- `country`: Land  
+- `year`: Jaar  
+- `suicides/100k pop`: Zelfmoorden per 100.000 inwoners  
 
-### Comparative Political Dataset (CPDS)  
+#### 4. Comparative Political Dataset (CPDS)  
 **Bron:** [CPDS Data](https://cpds-data.org/data/)  
-Gedetailleerde dataset met onder andere overheidsuitgaven aan sociale zekerheid, onderwijs en gezinstoelagen, voor 36 landen over de periode 1960–2022.
+**Beschrijving:**  
+Gedetailleerde informatie over overheidsuitgaven aan sociale zekerheid, gezondheidszorg, onderwijs en andere sociale voorzieningen, per land en jaar.  
 
-### Mental Health and Lifestyle Dataset  
+**Relevante variabelen:**  
+- `country`: Land  
+- `year`: Jaar  
+- `socexp_c_pmp`: Sociale uitgaven in cash (% van het BBP)  
+- `socexp_k_pmp`: Sociale uitgaven in natura (% van het BBP)  
+
+#### 5. Happiness and Life Satisfaction - Politics Dataset  
+**Bron:** [Our World in Data](https://ourworldindata.org/happiness-and-life-satisfaction)  
+**Beschrijving:**  
+Meet hoe belangrijk mensen politiek vinden in hun leven, per land en per jaar.  
+
+**Relevante variabelen:**  
+- `Entity`: Land  
+- `Year`: Jaar  
+- `Very important in life: Politics`: Percentage mensen dat politiek 'heel belangrijk' vindt  
+
+#### 6. Mental Health and Lifestyle Dataset  
 **Bron:** [Zenodo](https://zenodo.org/records/14838680)  
-Een grootschalige dataset (50.000 records) met informatie over mentale gezondheid, werkuren, slaappatroon, alcoholgebruik, roken en andere leefstijlfactoren.
+**Beschrijving:**  
+Grote dataset met informatie over mentale gezondheid, leefstijl, werkuren, slaap, alcoholgebruik en roken.  
 
+**Relevante variabelen:**  
+- `Alcohol_Consumption`: Alcoholgebruik per persoon per jaar (liter)  
 
-## Preprocessing stappen
+#### 7. Freedom House Dataset  
+**Bron:** [Freedom House](https://freedomhouse.org/report/freedom-world)  
+**Beschrijving:**  
+Bevat per land de jaarlijkse vrijheidsscores en vrijheidsstatus (vrij, gedeeltelijk vrij, niet vrij).  
 
-Om de datasets te combineren en bruikbaar te maken voor analyse en visualisatie, hebben we de volgende preprocessing-stappen uitgevoerd:
+**Relevante variabelen:**  
+- `Entity`: Land  
+- `Vrijheidsscore (0-100)`: Score op vrijheid (0 = niet vrij, 100 = volledig vrij)  
+- `Vrijheidsstatus`: Classificatie (vrij, gedeeltelijk vrij, niet vrij)  
 
-### Selectie van relevante variabelen
-Uit de oorspronkelijke datasets hebben we alleen de variabelen geselecteerd die aansluiten bij onze perspectieven, zoals geluksscore, mentale aandoeningen, zelfmoordcijfers, sociaal vangnet en politieke betrokkenheid.
+---
 
-### Opschonen van kolomnamen
-Kolomnamen zijn gestandaardiseerd naar een eenduidig Engels formaat om samenvoegen en analyse te vergemakkelijken.
+## Preprocessing-stappen
 
-### Filtering op tijdsperiode en landen
-Alle datasets zijn gefilterd op de meest recente jaren waarvoor voldoende data beschikbaar is (grotendeels tussen 2010–2022) en alleen landen die in álle relevante datasets voorkomen zijn behouden.
+Om de datasets geschikt te maken voor gecombineerde analyse en visualisatie zijn de volgende preprocessing-stappen uitgevoerd:
 
-### Verwijderen van ontbrekende waarden
-Records met ontbrekende of onbetrouwbare gegevens zijn verwijderd, met name binnen de datasets over mentale aandoeningen en zelfmoordcijfers.
+- **Selectie van relevante variabelen:**  
+  Alleen variabelen die direct aansluiten bij de onderzoeksvragen zijn behouden, waaronder geluksscores, sociale uitgaven (cash en in natura), mentale aandoeningen, zelfmoordcijfers, politieke betrokkenheid, vrijheidsscores en alcoholgebruik.
 
-### Samenvoegen datasets
-De datasets zijn samengevoegd op basis van land en jaar, zodat we integrale vergelijkingen kunnen maken tussen geluk, mentale gezondheid en maatschappelijke factoren.
+- **Harmonisatie van landnamen:**  
+  Landnamen zijn gestandaardiseerd over datasets heen (bijv. *United States of America* → *United States*) om samenvoegen mogelijk te maken.
 
-### Berekenen van nieuwe variabelen
-Voor enkele indicatoren, zoals overheidsuitgaven aan het sociaal vangnet of werkdruk, zijn nieuwe samengestelde variabelen berekend op basis van de ruwe data.
+- **Filtering op tijdsperiode en landen:**  
+  - Voor de analyse rond sociale hulpdiensten is gefilterd op de periode 2011–2016.  
+  - Voor de analyse rond vrijheid en politiek is gewerkt met het meest recente gemeenschappelijke jaar met voldoende data (2012).  
+  - Landen met ontbrekende data in een van de kernvariabelen zijn verwijderd.
 
-### Normaliseren van variabelen
-Bepaalde variabelen, zoals zelfmoorden per 100.000 inwoners, zijn genormaliseerd om landen met verschillende bevolkingsomvang goed te kunnen vergelijken.
+- **Opschonen en hernoemen van kolommen:**  
+  Kolomnamen zijn geharmoniseerd naar uniforme Engelse stijl, spaties en onnodige tekens zijn verwijderd.
 
+- **Samenvoegen datasets:**  
+  De originele bronnen zijn gecombineerd op land- en jaar-niveau. Dit heeft geleid tot samengestelde werkbestanden, waaronder:  
+  - *mental_welfare_dataset.csv* voor analyses rond sociale hulpdiensten en geluk  
+  - *Gecombineerde_dataset__Politiek_belang__alcoholconsumptie_en_geluk.csv* voor analyses rond politiek, vrijheid, alcoholgebruik en geluk  
+  - *Gecombineerde_dataset_met_extra_vrijheid.csv* voor de uitgebreide vrijheid-analyse  
 
+- **Bepaling van indicatoren:**  
+  Sociale uitgaven zijn opgesplitst in cash-uitgaven en in-natura hulpdiensten. Vrijheid is zowel als numerieke score als als categorie (vrij, gedeeltelijk vrij, niet vrij) meegenomen.
+
+**Correlatie-analyse en filtering:**  
+Binnen de sociale uitgaven zijn alleen indicatoren met een duidelijke positieve correlatie (r ≥ 0.4) met geluk behouden voor visualisatie in de heatmap. Dit zijn:
+- `socexp_k_pmp`: Sociale uitgaven in natura (% van het BBP)  
+- `homehelp_pmp`: Uitgaven aan thuishulp voor ouderen en zieken  
+- `childcare_pmp`: Uitgaven aan kinderopvang  
+- `family_pmp`: Uitgaven aan gezinsvoordelen  
+- `health_pmp`: Overheidsuitgaven aan gezondheidszorg  
+Deze indicatoren vertonen in de data het sterkste positieve verband met de Cantril-geluksscore en zijn daarom meegenomen in de verdere analyse.
+
+## Samenvatting
+Dankzij deze preprocessing zijn de datasets geschikt gemaakt voor de twee perspectieven van dit project:
+
+1. **Sociale hulpdiensten en welzijn:**  
+   We onderzoeken hoe in-natura hulpdiensten bijdragen aan geluk en mentale gezondheid, en vergelijken dit met de effecten van cash-uitkeringen.
+2. **Vrijheid, politiek en sociaal gedrag:**  
+   We analyseren hoe vrijheid, politieke betrokkenheid en sociaal gedrag (alcoholgebruik) samenhangen met geluk.
+
+De preprocessing sluit direct aan op de interactieve visualisaties en statistische analyses die in het project gepresenteerd worden.
