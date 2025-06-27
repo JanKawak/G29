@@ -205,7 +205,7 @@
 
 <li class="toctree-l1"><a class="reference internal" href="perspectief_1.html">Investeer méér in persoon‑gerichte sociale hulpdiensten</a></li>
 <li class="toctree-l1"><a class="reference internal" href="perspectief_2.html">Vrijheid, politiek en geluk: hoe culturele factoren ons welzijn beïnvloeden</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conclusie.html">Conclusie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusie.html">Conclusion</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="samenwerking.html">Samenwerking</a></li>
 </ul>
@@ -431,40 +431,37 @@ document.write(`
                   
   <section id="dataset-and-preprocessing">
 <h1>Dataset and Preprocessing<a class="headerlink" href="#dataset-and-preprocessing" title="Link to this heading">#</a></h1>
-<p>Voor dit project combineren we meerdere internationale datasets om te onderzoeken hoe sociale hulpdiensten, vrijheid, politieke betrokkenheid en sociaal gedrag samenhangen met nationaal geluk, mentale gezondheid en welzijn.</p>
+<p>We combineren internationale datasets om te onderzoeken hoe sociale hulpdiensten, vrijheid, politieke betrokkenheid en sociaal gedrag samenhangen met geluk, mentale gezondheid en welzijn.</p>
 <section id="gebruikte-datasets">
 <h2>Gebruikte datasets<a class="headerlink" href="#gebruikte-datasets" title="Link to this heading">#</a></h2>
 <section id="happiness-cantril-ladder">
 <h3>1. Happiness Cantril Ladder<a class="headerlink" href="#happiness-cantril-ladder" title="Link to this heading">#</a></h3>
 <p><strong>Bron:</strong> <a class="reference external" href="https://ourworldindata.org/grapher/happiness-cantril-ladder">Our World in Data</a><br />
-<strong>Beschrijving:</strong><br />
-Bevat per land en jaar de gemiddelde levensvoldoening, gemeten via de Cantril Ladder (schaal 0–10).<br />
-<strong>Relevante variabelen:</strong></p>
+Gemiddelde levensvoldoening per land en jaar (Cantril Ladder, schaal 0–10).<br />
+<strong>Variabelen:</strong></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Entity</span></code>: Land</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Year</span></code>: Jaar</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Life</span> <span class="pre">Ladder</span></code>: Gemiddelde geluksscore</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Life</span> <span class="pre">Ladder</span></code>: Geluksscore</p></li>
 </ul>
 </section>
 <section id="mental-health-dataset">
 <h3>2. Mental Health Dataset<a class="headerlink" href="#mental-health-dataset" title="Link to this heading">#</a></h3>
 <p><strong>Bron:</strong> <a class="reference external" href="https://www.kaggle.com/datasets/imtkaggleteam/mental-health">Kaggle</a><br />
-<strong>Beschrijving:</strong><br />
-Zelfgerapporteerde gegevens over het voorkomen van mentale aandoeningen, zoals depressie en angststoornissen.<br />
-<strong>Relevante variabelen:</strong></p>
+Percentage mensen met depressie- en angststoornissen per land en jaar.<br />
+<strong>Variabelen:</strong></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Entity</span></code>: Land</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Year</span></code>: Jaar</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Depressive_disorders</span></code>: Percentage mensen met een depressiestoornis</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Anxiety_disorders</span></code>: Percentage mensen met een angststoornis</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Depressive_disorders</span></code>: Depressie (%)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Anxiety_disorders</span></code>: Angststoornissen (%)</p></li>
 </ul>
 </section>
 <section id="suicide-rates-dataset">
 <h3>3. Suicide Rates Dataset<a class="headerlink" href="#suicide-rates-dataset" title="Link to this heading">#</a></h3>
 <p><strong>Bron:</strong> <a class="reference external" href="https://www.kaggle.com/code/lmorgan95/r-suicide-rates-in-depth-stats-insights/input">Kaggle</a><br />
-<strong>Beschrijving:</strong><br />
-Aantal zelfmoorden per land, per jaar, inclusief uitsplitsingen naar leeftijd en geslacht.<br />
-<strong>Relevante variabelen:</strong></p>
+Zelfmoorden per 100.000 inwoners, per land en jaar.<br />
+<strong>Variabelen:</strong></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">country</span></code>: Land</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">year</span></code>: Jaar</p></li>
@@ -474,48 +471,44 @@ Aantal zelfmoorden per land, per jaar, inclusief uitsplitsingen naar leeftijd en
 <section id="comparative-political-dataset-cpds">
 <h3>4. Comparative Political Dataset (CPDS)<a class="headerlink" href="#comparative-political-dataset-cpds" title="Link to this heading">#</a></h3>
 <p><strong>Bron:</strong> <a class="reference external" href="https://cpds-data.org/data/">CPDS Data</a><br />
-<strong>Beschrijving:</strong><br />
-Gedetailleerde informatie over overheidsuitgaven aan sociale zekerheid, gezondheidszorg, onderwijs en andere sociale voorzieningen, per land en jaar.<br />
-<strong>Relevante variabelen:</strong></p>
+Overheidsuitgaven aan sociale voorzieningen per land en jaar.<br />
+<strong>Variabelen:</strong></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">country</span></code>: Land</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">year</span></code>: Jaar</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">socexp_c_pmp</span></code>: Sociale uitgaven in cash (% van het BBP)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">socexp_k_pmp</span></code>: Sociale uitgaven in natura (% van het BBP)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">socexp_c_pmp</span></code>: Sociale uitgaven in cash (% BBP)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">socexp_k_pmp</span></code>: Sociale uitgaven in natura (% BBP)</p></li>
 </ul>
 </section>
 <section id="happiness-and-life-satisfaction-politics-dataset">
 <h3>5. Happiness and Life Satisfaction - Politics Dataset<a class="headerlink" href="#happiness-and-life-satisfaction-politics-dataset" title="Link to this heading">#</a></h3>
 <p><strong>Bron:</strong> <a class="reference external" href="https://ourworldindata.org/happiness-and-life-satisfaction">Our World in Data</a><br />
-<strong>Beschrijving:</strong><br />
-Meet hoe belangrijk mensen politiek vinden in hun leven, per land en per jaar.<br />
-<strong>Relevante variabelen:</strong></p>
+Hoe belangrijk mensen politiek vinden, per land en jaar.<br />
+<strong>Variabelen:</strong></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Entity</span></code>: Land</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Year</span></code>: Jaar</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Very</span> <span class="pre">important</span> <span class="pre">in</span> <span class="pre">life:</span> <span class="pre">Politics</span></code>: Percentage mensen dat politiek ‘heel belangrijk’ vindt</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Very</span> <span class="pre">important</span> <span class="pre">in</span> <span class="pre">life:</span> <span class="pre">Politics</span></code>: Politiek belangrijk (%)</p></li>
 </ul>
 </section>
 <section id="mental-health-and-lifestyle-dataset">
 <h3>6. Mental Health and Lifestyle Dataset<a class="headerlink" href="#mental-health-and-lifestyle-dataset" title="Link to this heading">#</a></h3>
 <p><strong>Bron:</strong> <a class="reference external" href="https://zenodo.org/records/14838680">Zenodo</a><br />
-<strong>Beschrijving:</strong><br />
-Grote dataset met informatie over mentale gezondheid, leefstijl, werkuren, slaap, alcoholgebruik en roken.<br />
-<strong>Relevante variabelen:</strong></p>
+Alcoholgebruik per persoon per jaar.<br />
+<strong>Variabelen:</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Alcohol_Consumption</span></code>: Alcoholgebruik per persoon per jaar (liter)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Alcohol_Consumption</span></code>: Liter alcohol per persoon per jaar</p></li>
 </ul>
 </section>
 <section id="freedom-house-dataset">
 <h3>7. Freedom House Dataset<a class="headerlink" href="#freedom-house-dataset" title="Link to this heading">#</a></h3>
 <p><strong>Bron:</strong> <a class="reference external" href="https://freedomhouse.org/report/freedom-world">Freedom House</a><br />
-<strong>Beschrijving:</strong><br />
-Bevat per land de jaarlijkse vrijheidsscores en vrijheidsstatus (vrij, gedeeltelijk vrij, niet vrij).<br />
-<strong>Relevante variabelen:</strong></p>
+Vrijheidsscores en vrijheidsstatus per land.<br />
+<strong>Variabelen:</strong></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Entity</span></code>: Land</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Vrijheidsscore</span> <span class="pre">(0-100)</span></code>: Score op vrijheid (0 = niet vrij, 100 = volledig vrij)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Vrijheidsstatus</span></code>: Classificatie (vrij, gedeeltelijk vrij, niet vrij)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Vrijheidsscore</span> <span class="pre">(0-100)</span></code>: Vrijheidsscore</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Vrijheidsstatus</span></code>: Vrij, gedeeltelijk vrij, niet vrij</p></li>
 </ul>
 <hr class="docutils" />
 </section>
@@ -523,40 +516,39 @@ Bevat per land de jaarlijkse vrijheidsscores en vrijheidsstatus (vrij, gedeeltel
 </section>
 <section id="preprocessing-stappen">
 <h1>Preprocessing-stappen<a class="headerlink" href="#preprocessing-stappen" title="Link to this heading">#</a></h1>
-<p>Om de datasets geschikt te maken voor gecombineerde analyse en visualisatie zijn de volgende preprocessing-stappen uitgevoerd:</p>
 <ul class="simple">
-<li><p><strong>Selectie van relevante variabelen:</strong><br />
-Alleen variabelen die direct aansluiten bij de onderzoeksvragen zijn behouden, waaronder geluksscores, sociale uitgaven (cash en in natura), mentale aandoeningen, zelfmoordcijfers, politieke betrokkenheid, vrijheidsscores en alcoholgebruik.</p></li>
-<li><p><strong>Harmonisatie van landnamen:</strong><br />
-Landnamen zijn gestandaardiseerd over datasets heen (bijv. <em>United States of America</em> → <em>United States</em>) om samenvoegen mogelijk te maken.</p></li>
-<li><p><strong>Filtering op tijdsperiode en landen:</strong></p>
+<li><p><strong>Selectie variabelen:</strong> Alleen variabelen die aansluiten bij de onderzoeksvraag zijn behouden (geluk, sociale uitgaven, mentale aandoeningen, zelfmoorden, politieke betrokkenheid, vrijheid, alcoholgebruik).</p></li>
+<li><p><strong>Harmonisatie landnamen:</strong> Landnamen gestandaardiseerd (bijv. <em>United States of America</em> → <em>United States</em>).</p></li>
+<li><p><strong>Filtering op tijd en landen:</strong></p>
 <ul>
-<li><p>Voor de analyse rond sociale hulpdiensten is gefilterd op de periode 2011–2016.</p></li>
-<li><p>Voor de analyse rond vrijheid en politiek is gewerkt met het meest recente gemeenschappelijke jaar met voldoende data (2012).</p></li>
-<li><p>Landen met ontbrekende data in een van de kernvariabelen zijn verwijderd.</p></li>
+<li><p>Sociale hulpdiensten: periode 2011–2016.</p></li>
+<li><p>Vrijheid en politiek: jaar 2012 (meest complete jaar).</p></li>
+<li><p>Landen met ontbrekende kerndata verwijderd.</p></li>
 </ul>
 </li>
-<li><p><strong>Opschonen en hernoemen van kolommen:</strong><br />
-Kolomnamen zijn geharmoniseerd naar uniforme Engelse stijl, spaties en onnodige tekens zijn verwijderd.</p></li>
-<li><p><strong>Samenvoegen datasets:</strong><br />
-De originele bronnen zijn gecombineerd op land- en jaar-niveau. Dit heeft geleid tot samengestelde werkbestanden, waaronder:</p>
+<li><p><strong>Opschonen kolomnamen:</strong> Engelse stijl gehanteerd, spaties en onnodige tekens verwijderd.</p></li>
+<li><p><strong>Samenvoegen datasets:</strong> Gecombineerd op land- en jaarniveau tot:</p>
 <ul>
-<li><p><em>mental_welfare_dataset.csv</em> voor analyses rond sociale hulpdiensten en geluk</p></li>
-<li><p><em>Gecombineerde_dataset__Politiek_belang__alcoholconsumptie_en_geluk.csv</em> voor analyses rond politiek, vrijheid, alcoholgebruik en geluk</p></li>
-<li><p><em>Gecombineerde_dataset_met_extra_vrijheid.csv</em> voor de uitgebreide vrijheid-analyse</p></li>
+<li><p><em>mental_welfare_dataset.csv</em> (sociale hulpdiensten &amp; geluk)</p></li>
+<li><p><em>Gecombineerde_dataset__Politiek_belang__alcoholconsumptie_en_geluk.csv</em> (politiek, vrijheid, alcoholgebruik &amp; geluk)</p></li>
+<li><p><em>Gecombineerde_dataset_met_extra_vrijheid.csv</em> (uitgebreide vrijheid-analyse)</p></li>
 </ul>
 </li>
-<li><p><strong>Bepaling van indicatoren:</strong><br />
-Sociale uitgaven zijn opgesplitst in cash-uitgaven en in-natura hulpdiensten. Vrijheid is zowel als numerieke score als als categorie (vrij, gedeeltelijk vrij, niet vrij) meegenomen.</p></li>
-<li><p><strong>Correlatie-analyse en filtering:</strong>
-Binnen de sociale uitgaven zijn alleen indicatoren met een duidelijke positieve correlatie (r ≥ 0.4) met geluk behouden voor visualisatie in de heatmap. Dit zijn:</p>
+<li><p><strong>Bepaling indicatoren:</strong></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">socexp_k_pmp</span></code>: Sociale uitgaven in natura (% van het BBP)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">homehelp_pmp</span></code>: Uitgaven aan thuishulp voor ouderen en zieken</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">childcare_pmp</span></code>: Uitgaven aan kinderopvang</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">family_pmp</span></code>: Uitgaven aan gezinsvoordelen</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">health_pmp</span></code>: Overheidsuitgaven aan gezondheidszorg<br />
-Deze indicatoren vertonen in de data het sterkste positieve verband met de Cantril-geluksscore en zijn daarom meegenomen in de verdere analyse.</p></li>
+<li><p>Sociale uitgaven opgesplitst in cash en in-natura.</p></li>
+<li><p>Vrijheid zowel numeriek (score) als categorisch (vrij, gedeeltelijk vrij, niet vrij).</p></li>
+</ul>
+</li>
+<li><p><strong>Correlatie-analyse en filtering:</strong><br />
+Alleen sociale indicatoren met positieve correlatie (r ≥ 0.4) met geluk zijn meegenomen in de heatmap:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">socexp_k_pmp</span></code>: Sociale uitgaven in natura</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">homehelp_pmp</span></code>: Thuishulp ouderen/zieken</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">childcare_pmp</span></code>: Kinderopvang</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">family_pmp</span></code>: Gezinsvoordelen</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">health_pmp</span></code>: Gezondheidszorg<br />
+Deze indicatoren vertonen het sterkste positieve verband met de Cantril-geluksscore en zijn daarom meegenomen in de verdere analyse.</p></li>
 </ul>
 </li>
 </ul>
