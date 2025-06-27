@@ -7,7 +7,6 @@ We werkten samen via wekelijkse bijeenkomsten en hielden tussendoor contact via 
 **Jan & Fien**: Analyse en visualisaties van perspectief 2
 
 **Hein & Diederick**: Analyse en visualisaties van perspectief 1
-
 De inleiding (Jan), conclusie (Diederick) en reflectie (Fien) zijn individueel opgesteld en daarna gezamenlijk besproken en verbeterd. In de afrondende fase verfijnden we de data story en visualisaties op basis van peer feedback.
 
 Bijdragen per persoon:
