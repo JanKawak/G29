@@ -95,11 +95,3 @@ Om de datasets geschikt te maken voor gecombineerde analyse en visualisatie zijn
     - `family_pmp`: Uitgaven aan gezinsvoordelen  
     - `health_pmp`: Overheidsuitgaven aan gezondheidszorg  
     Deze indicatoren vertonen in de data het sterkste positieve verband met de Cantril-geluksscore en zijn daarom meegenomen in de verdere analyse.
-
-## Samenvatting
-Dankzij deze preprocessing zijn de datasets geschikt gemaakt voor de twee perspectieven van dit project:
-1. **Sociale hulpdiensten en welzijn:**  
-   We onderzoeken hoe in-natura hulpdiensten bijdragen aan geluk en mentale gezondheid, en vergelijken dit met de effecten van cash-uitkeringen.
-2. **Vrijheid, politiek en sociaal gedrag:**  
-   We analyseren hoe vrijheid, politieke betrokkenheid en sociaal gedrag (alcoholgebruik) samenhangen met geluk.
-De preprocessing sluit direct aan op de interactieve visualisaties en statistische analyses die in het project gepresenteerd worden.
