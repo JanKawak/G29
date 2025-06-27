@@ -10,6 +10,10 @@ Wel is het goed om te noemen dat onze analyse gebaseerd is op gegevens uit ongev
 Samenvattend
 De grafieken laten duidelijk zien dat zowel investeren in sociale hulpdiensten als het bevorderen van vrijheid en rust samenhangen met meer geluk. Voor beleidsmakers betekent dit dat het versterken van sociale voorzieningen en het creëren van een ontspannen, vrije samenleving minstens zo belangrijk is als economische groei als ze het welzijn van mensen echt willen verbeteren.
 
+# Reflectie
+Onze analyse geeft interessante aanknopingspunten over de rol van sociale hulpdiensten, vrijheid en geluk, maar er zijn ook duidelijke beperkingen. De data die we gebruikt hebben, komen allemaal uit 2012. Daardoor zeggen de uitkomsten vooral iets over dat moment in de tijd, niet over hoe die verbanden zich ontwikkelen of veranderen. Bovendien kijken we nu alleen naar gemiddelden per land. Wat er binnen landen gebeurt, bijvoorbeeld verschillen tussen regio's of tussen bevolkingsgroepen, blijft buiten beeld.
+Het zou daarom waardevol zijn als vervolgonderzoek hier dieper op ingaat. Denk aan het analyseren van data over meerdere jaren, of onderzoeken op individueel niveau. Zo kun je beter begrijpen hoe beleid en cultuur niet alleen het algemene geluk beïnvloeden, maar ook de verschillen daartussen verklaren.
+
 ---
 
 Bedankt voor het bekijken van dit rapport!
