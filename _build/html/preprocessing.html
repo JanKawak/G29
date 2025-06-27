@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Preprocessing &#8212; Welzijn</title>
+    <title>Dataset and Preprocessing &#8212; Welzijn</title>
   
   
   
@@ -201,7 +201,8 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Preprocessing</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Dataset and Preprocessing</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="perspectief_1.html">Investeer méér in persoon‑gerichte sociale hulpdiensten</a></li>
 <li class="toctree-l1"><a class="reference internal" href="perspectief_2.html">Vrijheid, politiek en geluk: hoe culturele factoren ons welzijn beïnvloeden</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusie.html">Conclusie</a></li>
@@ -391,7 +392,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Preprocessing</h1>
+    <h1>Dataset and Preprocessing</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -401,8 +402,28 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-bronnen">Data bronnen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Dataset and Preprocessing</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#datasetbeschrijvingen">Datasetbeschrijvingen</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#happiness-cantril-ladder">Happiness Cantril Ladder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mental-health-dataset">Mental Health Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suicide-rates-dataset">Suicide Rates Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#happiness-and-life-satisfaction-politics-dataset">Happiness and Life Satisfaction - Politics Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparative-political-dataset-cpds">Comparative Political Dataset (CPDS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mental-health-and-lifestyle-dataset">Mental Health and Lifestyle Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-stappen">Preprocessing stappen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selectie-van-relevante-variabelen">Selectie van relevante variabelen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opschonen-van-kolomnamen">Opschonen van kolomnamen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-op-tijdsperiode-en-landen">Filtering op tijdsperiode en landen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verwijderen-van-ontbrekende-waarden">Verwijderen van ontbrekende waarden</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#samenvoegen-datasets">Samenvoegen datasets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#berekenen-van-nieuwe-variabelen">Berekenen van nieuwe variabelen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normaliseren-van-variabelen">Normaliseren van variabelen</a></li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -413,19 +434,73 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="preprocessing">
-<h1>Preprocessing<a class="headerlink" href="#preprocessing" title="Link to this heading">#</a></h1>
-<p>In deze sectie worden de stappen beschreven die zijn genomen om de data schoon te maken en voor te bereiden voor analyse.</p>
-<ul class="simple">
-<li><p>Data-inlezen</p></li>
-<li><p>Data opschonen</p></li>
-<li><p>Feature engineering</p></li>
-<li><p>Filtering en selectie</p></li>
-</ul>
-<hr class="docutils" />
-<section id="data-bronnen">
-<h2>Data bronnen<a class="headerlink" href="#data-bronnen" title="Link to this heading">#</a></h2>
-<p>Hier kun je uitleggen welke databestanden zijn gebruikt en hoe ze zijn verwerkt.</p>
+  <section id="dataset-and-preprocessing">
+<h1>Dataset and Preprocessing<a class="headerlink" href="#dataset-and-preprocessing" title="Link to this heading">#</a></h1>
+<p>Voor dit project maken we gebruik van zes verschillende datasets die samen inzicht geven in de relatie tussen mentale gezondheid, geluk en maatschappelijke factoren op internationaal niveau. Hieronder beschrijven we de datasets en de belangrijkste preprocessing-stappen die we hebben uitgevoerd.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="datasetbeschrijvingen">
+<h1>Datasetbeschrijvingen<a class="headerlink" href="#datasetbeschrijvingen" title="Link to this heading">#</a></h1>
+<section id="happiness-cantril-ladder">
+<h2>Happiness Cantril Ladder<a class="headerlink" href="#happiness-cantril-ladder" title="Link to this heading">#</a></h2>
+<p><strong>Bron:</strong> <a class="reference external" href="https://ourworldindata.org/grapher/happiness-cantril-ladder">Our World in Data</a><br />
+Deze dataset bevat per land en per jaar de gemiddelde score van levensvoldoening (geluksscore), gemeten via de Cantril Ladder (schaal 0–10). Dit geeft een direct beeld van hoe gelukkig mensen zichzelf beoordelen.</p>
+</section>
+<section id="mental-health-dataset">
+<h2>Mental Health Dataset<a class="headerlink" href="#mental-health-dataset" title="Link to this heading">#</a></h2>
+<p><strong>Bron:</strong> <a class="reference external" href="https://www.kaggle.com/datasets/imtkaggleteam/mental-health">Kaggle</a><br />
+Bevat gegevens over het voorkomen van depressieve en angststoornissen, gebaseerd op enquêtes en screeningsvragenlijsten.</p>
+</section>
+<section id="suicide-rates-dataset">
+<h2>Suicide Rates Dataset<a class="headerlink" href="#suicide-rates-dataset" title="Link to this heading">#</a></h2>
+<p><strong>Bron:</strong> <a class="reference external" href="https://www.kaggle.com/code/lmorgan95/r-suicide-rates-in-depth-stats-insights/input">Kaggle</a><br />
+Geeft per land en per jaar het aantal zelfmoorden weer, inclusief uitsplitsingen naar leeftijd en geslacht.</p>
+</section>
+<section id="happiness-and-life-satisfaction-politics-dataset">
+<h2>Happiness and Life Satisfaction - Politics Dataset<a class="headerlink" href="#happiness-and-life-satisfaction-politics-dataset" title="Link to this heading">#</a></h2>
+<p><strong>Bron:</strong> <a class="reference external" href="https://ourworldindata.org/happiness-and-life-satisfaction">Our World in Data</a><br />
+Meet hoe belangrijk mensen politiek vinden in hun leven, weergegeven per land en per jaar.</p>
+</section>
+<section id="comparative-political-dataset-cpds">
+<h2>Comparative Political Dataset (CPDS)<a class="headerlink" href="#comparative-political-dataset-cpds" title="Link to this heading">#</a></h2>
+<p><strong>Bron:</strong> <a class="reference external" href="https://cpds-data.org/data/">CPDS Data</a><br />
+Gedetailleerde dataset met onder andere overheidsuitgaven aan sociale zekerheid, onderwijs en gezinstoelagen, voor 36 landen over de periode 1960–2022.</p>
+</section>
+<section id="mental-health-and-lifestyle-dataset">
+<h2>Mental Health and Lifestyle Dataset<a class="headerlink" href="#mental-health-and-lifestyle-dataset" title="Link to this heading">#</a></h2>
+<p><strong>Bron:</strong> <a class="reference external" href="https://zenodo.org/records/14838680">Zenodo</a><br />
+Een grootschalige dataset (50.000 records) met informatie over mentale gezondheid, werkuren, slaappatroon, alcoholgebruik, roken en andere leefstijlfactoren.</p>
+</section>
+<section id="preprocessing-stappen">
+<h2>Preprocessing stappen<a class="headerlink" href="#preprocessing-stappen" title="Link to this heading">#</a></h2>
+<p>Om de datasets te combineren en bruikbaar te maken voor analyse en visualisatie, hebben we de volgende preprocessing-stappen uitgevoerd:</p>
+<section id="selectie-van-relevante-variabelen">
+<h3>Selectie van relevante variabelen<a class="headerlink" href="#selectie-van-relevante-variabelen" title="Link to this heading">#</a></h3>
+<p>Uit de oorspronkelijke datasets hebben we alleen de variabelen geselecteerd die aansluiten bij onze perspectieven, zoals geluksscore, mentale aandoeningen, zelfmoordcijfers, sociaal vangnet en politieke betrokkenheid.</p>
+</section>
+<section id="opschonen-van-kolomnamen">
+<h3>Opschonen van kolomnamen<a class="headerlink" href="#opschonen-van-kolomnamen" title="Link to this heading">#</a></h3>
+<p>Kolomnamen zijn gestandaardiseerd naar een eenduidig Engels formaat om samenvoegen en analyse te vergemakkelijken.</p>
+</section>
+<section id="filtering-op-tijdsperiode-en-landen">
+<h3>Filtering op tijdsperiode en landen<a class="headerlink" href="#filtering-op-tijdsperiode-en-landen" title="Link to this heading">#</a></h3>
+<p>Alle datasets zijn gefilterd op de meest recente jaren waarvoor voldoende data beschikbaar is (grotendeels tussen 2010–2022) en alleen landen die in álle relevante datasets voorkomen zijn behouden.</p>
+</section>
+<section id="verwijderen-van-ontbrekende-waarden">
+<h3>Verwijderen van ontbrekende waarden<a class="headerlink" href="#verwijderen-van-ontbrekende-waarden" title="Link to this heading">#</a></h3>
+<p>Records met ontbrekende of onbetrouwbare gegevens zijn verwijderd, met name binnen de datasets over mentale aandoeningen en zelfmoordcijfers.</p>
+</section>
+<section id="samenvoegen-datasets">
+<h3>Samenvoegen datasets<a class="headerlink" href="#samenvoegen-datasets" title="Link to this heading">#</a></h3>
+<p>De datasets zijn samengevoegd op basis van land en jaar, zodat we integrale vergelijkingen kunnen maken tussen geluk, mentale gezondheid en maatschappelijke factoren.</p>
+</section>
+<section id="berekenen-van-nieuwe-variabelen">
+<h3>Berekenen van nieuwe variabelen<a class="headerlink" href="#berekenen-van-nieuwe-variabelen" title="Link to this heading">#</a></h3>
+<p>Voor enkele indicatoren, zoals overheidsuitgaven aan het sociaal vangnet of werkdruk, zijn nieuwe samengestelde variabelen berekend op basis van de ruwe data.</p>
+</section>
+<section id="normaliseren-van-variabelen">
+<h3>Normaliseren van variabelen<a class="headerlink" href="#normaliseren-van-variabelen" title="Link to this heading">#</a></h3>
+<p>Bepaalde variabelen, zoals zelfmoorden per 100.000 inwoners, zijn genormaliseerd om landen met verschillende bevolkingsomvang goed te kunnen vergelijken.</p>
+</section>
 </section>
 </section>
 
@@ -493,8 +568,28 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-bronnen">Data bronnen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Dataset and Preprocessing</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#datasetbeschrijvingen">Datasetbeschrijvingen</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#happiness-cantril-ladder">Happiness Cantril Ladder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mental-health-dataset">Mental Health Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suicide-rates-dataset">Suicide Rates Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#happiness-and-life-satisfaction-politics-dataset">Happiness and Life Satisfaction - Politics Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparative-political-dataset-cpds">Comparative Political Dataset (CPDS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mental-health-and-lifestyle-dataset">Mental Health and Lifestyle Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-stappen">Preprocessing stappen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selectie-van-relevante-variabelen">Selectie van relevante variabelen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opschonen-van-kolomnamen">Opschonen van kolomnamen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-op-tijdsperiode-en-landen">Filtering op tijdsperiode en landen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verwijderen-van-ontbrekende-waarden">Verwijderen van ontbrekende waarden</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#samenvoegen-datasets">Samenvoegen datasets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#berekenen-van-nieuwe-variabelen">Berekenen van nieuwe variabelen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normaliseren-van-variabelen">Normaliseren van variabelen</a></li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
